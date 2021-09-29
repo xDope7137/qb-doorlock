@@ -20,7 +20,11 @@ AddEventHandler('qb-doorlock:client:setState', function(doorID, state)
 		for a = 1, #current.doors do
 			local currentDoor = current.doors[a]
 			if not currentDoor.object or not DoesEntityExist(currentDoor.object) then
-				currentDoor.object = GetClosestObjectOfType(currentDoor.objCoords, 1.0, GetHashKey(currentDoor.objName), false, false, false)
+				if type(v.objName) == "number" then
+					currentDoor.object = GetClosestObjectOfType(currentDoor.objCoords, 1.0, v.objName, false, false, false)
+				else
+					currentDoor.object = GetClosestObjectOfType(currentDoor.objCoords, 1.0, GetHashKey(currentDoor.objName), false, false, false)
+				end
 			end
 			FreezeEntityPosition(currentDoor.object, current.locked)
 
@@ -30,7 +34,11 @@ AddEventHandler('qb-doorlock:client:setState', function(doorID, state)
 		end
 	else
 		if not current.object or not DoesEntityExist(current.object) then
-			current.object = GetClosestObjectOfType(current.objCoords, 1.0, GetHashKey(current.objName), false, false, false)
+			if type(v.objName) == "number" then
+				current.object = GetClosestObjectOfType(current.objCoords, 1.0, current.objName, false, false, false)
+			else
+				current.object = GetClosestObjectOfType(current.objCoords, 1.0, GetHashKey(current.objName), false, false, false)
+			end	
 		end
 		FreezeEntityPosition(current.object, current.locked)
 
@@ -174,7 +182,11 @@ Citizen.CreateThread(function()
 					for a = 1, #current.doors do
 						local currentDoor = current.doors[a]
 						if not currentDoor.object or not DoesEntityExist(currentDoor.object) then
-							currentDoor.object = GetClosestObjectOfType(currentDoor.objCoords, 1.0, GetHashKey(currentDoor.objName), false, false, false)
+							if type(v.objName) == "number" then
+								currentDoor.object = GetClosestObjectOfType(currentDoor.objCoords, 1.0, v.objName, false, false, false)
+							else
+								currentDoor.object = GetClosestObjectOfType(currentDoor.objCoords, 1.0, GetHashKey(currentDoor.objName), false, false, false)
+							end				
 						end
 						FreezeEntityPosition(currentDoor.object, current.locked)
 
@@ -184,7 +196,11 @@ Citizen.CreateThread(function()
 					end
 				else
 					if not current.object or not DoesEntityExist(current.object) then
-						current.object = GetClosestObjectOfType(current.objCoords, 1.0, GetHashKey(current.objName), false, false, false)
+						if type(v.objName) == "number" then
+							current.object = GetClosestObjectOfType(current.objCoords, 1.0, current.objName, false, false, false)
+						else
+							current.object = GetClosestObjectOfType(current.objCoords, 1.0, GetHashKey(current.objName), false, false, false)
+						end	
 					end
 					FreezeEntityPosition(current.object, current.locked)
 

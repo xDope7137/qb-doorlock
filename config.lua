@@ -1297,5 +1297,5 @@ QB.Doors = {
 		pickable = false,
 		distance = 15.0,
 		size = 2
-	},
+	},	
 }

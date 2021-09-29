@@ -1,6 +1,12 @@
 # qb-doorlock
 Doorlock Script For QB-Core
 
+Added Feature :
+
+- You can add doorlocks without having to need their Model names. You can do /admin and directly get their hash code of the door and put it in `objName` in config.
+
+
+
 # License
 
     QBCore Framework
